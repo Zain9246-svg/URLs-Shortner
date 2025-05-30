@@ -19,7 +19,11 @@
         <input type="text" id="shortCode" name="shortCode" required />
       </div>
       <button type="submit">Shorten</button>
+      
     </form>
+     <form action="/delete-all" method="POST" onsubmit="return confirm('Are you sure you want to delete all short links?');">
+  <button type="submit" class="deleteAll">Delete All Short Links</button>
+</form>
     
     <div id="result">
       <h2>Shortened URLs</h2>
@@ -29,42 +33,5 @@
     </div>
   </div>
 
-  <!-- <script>
-    document.getElementById('shorten-form').addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const formdata = new FormData(event.target);
-      const url = formdata.get('url');
-      const shortCode = formdata.get('shorten');
-
-      try {
-        const response = await fetch('/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ url, shortCode })
-        });
-
-        const resultEl = document.getElementById('result');
-        const listEl = document.getElementById('shortened-urls');
-
-        if (response.ok) {
-          const data = await response.json();
-          const listItem = document.createElement('li');
-          const shortUrl = data.shortUrl || `http://ZainUlHassan.com.pk/${shortCode}`;
-          listItem.innerHTML = `<a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
-          listEl.appendChild(listItem);
-          resultEl.style.display = 'block';
-        } else {
-          const errorData = await response.json();
-          alert(errorData.error || 'An error occurred.');
-        }
-      } catch (error) {
-        alert('Error submitting form.');
-        console.error(error);
-      }
-    });
-  </script> -->
 </body>
 </html>
