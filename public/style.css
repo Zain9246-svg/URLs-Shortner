@@ -38,4 +38,17 @@ h1,h2{
     cursor: pointer;
     margin: 10px 0;
 }
-
+.shortened-urls li a{
+    color:rgb(54, 59, 187);
+    margin-bottom: 10px;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.shortened-urls li{
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+}
