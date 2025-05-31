@@ -1,57 +1,26 @@
 import fs from 'fs/promises';
 import path from 'path';
-import crypto from 'crypto';
 import { Router } from 'express';
+import { postURLShortner } from '../controllers/postShortner.controller.js';
 
-const DATA_FILE = path.join('data', 'links.json');
+
 const PORT = 3000;
 const router = Router();
 
-const loadLinks = async () => {
-  try {
-    const data = await fs.readFile(DATA_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      await fs.writeFile(DATA_FILE, JSON.stringify({}));
-      return {};
-    }
-    console.error('Error loading links:', error);
-    return {};
-  }
-};
+router.post("/", postURLShortner(saveLinks, loadLinks));
 
-// Save links to JSON
-const saveLinks = async (links) => {
-  await fs.writeFile(DATA_FILE, JSON.stringify(links, null, 2));
-  console.log('Links saved successfully');
-};
 
-// POST: Create short link
-router.post("/", async (req, res) => {
-  try {
-    const { url, shortCode } = req.body;
-
-    if (!url) {
-      return res.status(400).send("URL is required");
-    }
-
-    const links = await loadLinks();
-    const finalShortCode = shortCode || crypto.randomBytes(4).toString("hex");
-
-    if (links[finalShortCode]) {
-      return res.status(400).send("Short code already exists. Please choose another.");
-    }
-
-    links[finalShortCode] = url;
-    await saveLinks(links);
-
-    return res.redirect("/");
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Internal server error");
-  }
-});
+// router.get("/report", async (req, res) => {
+//     // res.send(`<h1>Report Page</h1>`)
+//     const students =[
+//         { name: 'John Doe', age: 20, grade: 'A'},
+//         { name: 'Jane Smith', age: 22, grade: 'B'},
+//         { name: 'Alice Johnson', age: 21, grade: 'C'},
+//         { name: 'Bob Brown', age: 23, grade: 'B+'},
+//         { name: 'Charlie White', age: 19, grade: 'A-'}
+//     ]
+//     res.render('report', {students});
+// });
 
 // GET: Redirect from short code
 router.get("/:shortCode", async (req, res) => {
@@ -73,7 +42,7 @@ router.get("/:shortCode", async (req, res) => {
 // GET: Homepage
 router.get('/', async (req, res) => {
   try {
-    const file = await fs.readFile(path.join('views', 'index.html'), 'utf-8');
+    const file = await fs.readFile(path.join('views', 'index.ejs'), 'utf-8');
     const links = await loadLinks();
     // console.log("Loaded links:", links);  // Debug line
 

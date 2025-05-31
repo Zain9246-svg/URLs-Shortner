@@ -9,11 +9,9 @@ const app = express();
 app.use(express.static(path.join('public')));
 app.use(express.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
 
-app.use( shortnerRouter)
-// Load links from JSON
-
-
+app.use(shortnerRouter)
 
 // Start server
 app.listen(PORT, () => {

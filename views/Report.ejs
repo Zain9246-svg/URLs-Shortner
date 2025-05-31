@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Card of Students</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <%- include('header') %>
+
+        <h1>Students Report Card</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% students.forEach(stud=> { %>
+                    <tr>
+                        <td>
+                            <%= stud.name %>
+                        </td>
+                        <td>
+                            <%= stud.age %>
+                        </td>
+                        <td>
+                            <%= stud.grade %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+</body>
+
+</html>
