@@ -4,14 +4,22 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
     "dev": "node --watch app.js",
+=======
+    "dev":"node --watch app.js",
+>>>>>>> 627c64711e1a4ffa02e1318ca94e2f44cb411514
     "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "5.0"
   }
+=======
+  "description": ""
+>>>>>>> 627c64711e1a4ffa02e1318ca94e2f44cb411514
 }

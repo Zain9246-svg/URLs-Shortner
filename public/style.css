@@ -5,6 +5,7 @@
 }
 body{
     font-family: 'Poppins', sans-serif;
+<<<<<<< HEAD
     
 }
 .main{
@@ -15,6 +16,16 @@ body{
 .container{
     width:400px;
     margin-top:100px;   
+=======
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container{
+    width:400px;
+    margin-top:100px;
+>>>>>>> 627c64711e1a4ffa02e1318ca94e2f44cb411514
     box-shadow: 0px 0px 5px 2px rgb(75, 72, 72);
     padding: 20px;
     border-radius: 10px;
@@ -40,6 +51,7 @@ h1,h2{
     cursor: pointer;
     margin: 10px 0;
 }
+<<<<<<< HEAD
 .shortened-urls li a{
     color:rgb(54, 59, 187);
     margin-bottom: 10px;
@@ -105,3 +117,6 @@ th, td {
     border: 1px solid #000;
     padding: 8px;
 }
+=======
+
+>>>>>>> 627c64711e1a4ffa02e1318ca94e2f44cb411514
