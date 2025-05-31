@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import {shortnerRouter} from './Routes/shortner.routes.js';
 
-const PORT = 3000;
+export const PORT = 3000;
 
 const app = express();
 

@@ -1,4 +1,7 @@
-const DATA_FILE = path.join('data', 'links.json');
+import fs from 'fs/promises';
+import path from 'path';
+
+export const DATA_FILE = path.join('data', 'links.json');
 export const loadLinks = async () => {
     try {
         const data = await fs.readFile(DATA_FILE, 'utf-8');
